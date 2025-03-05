@@ -1,0 +1,106 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: url('../image/bg.jpg') center center / cover no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 容器样式 */
+.container {
+    background: #fffaf0;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 2.5em;
+    color: #6c4b4b;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #6c4b4b;
+    margin-bottom: 20px;
+}
+
+/* 表单样式 */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #6c4b4b;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #d1c4b7;
+    border-radius: 6px;
+    font-size: 17px;
+    background: linear-gradient(135deg, #f8f8f8 0%, #eaeaea 100%);
+    transition: border-color 0.3s ease, background 0.5s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #c7af9a;
+    background: #f8f5f0;
+}
+
+button {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #e8d2c1 0%, #d9b8a5 100%);
+    color: #6c4b4b;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #d9b8a5 0%, #c7af9a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.register-link a {
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #c7af9a;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* 链接样式 */
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* 错误消息样式 */
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
