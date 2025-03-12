@@ -133,7 +133,6 @@
 </div>
 
 <!-- 添加房间模态框 -->
-<!-- 添加房间模态框 -->
 <div id="addRoomModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -146,7 +145,11 @@
             </div>
             <div class="form-group">
                 <label>房间类型：</label>
-                <input type="text" name="roomType" required>
+                <select name="roomType" required>
+                    <option value="大床房">大床房</option>
+                    <option value="标准房">标准房</option>
+                    <option value="亲子房">亲子房</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>价格：</label>
@@ -179,7 +182,11 @@
             </div>
             <div class="form-group">
                 <label>房间类型：</label>
-                <input type="text" id="editRoomType" name="roomType" required>
+                <select id="editRoomType" name="roomType" required>
+                    <option value="大床房">大床房</option>
+                    <option value="标准房">标准房</option>
+                    <option value="亲子房">亲子房</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>价格：</label>
@@ -250,7 +257,15 @@
     function openEditModal(roomId, roomNumber, roomType, price, availability) {
         document.getElementById("editRoomId").value = roomId;
         document.getElementById("editRoomNumber").value = roomNumber;
-        document.getElementById("editRoomType").value = roomType;
+        // 设置房间类型选中值
+        var editRoomType = document.getElementById("editRoomType");
+        if (roomType === "大床房") {
+            editRoomType.value = "大床房";
+        } else if (roomType === "标准房") {
+            editRoomType.value = "标准房";
+        } else if (roomType === "亲子房") {
+            editRoomType.value = "亲子房";
+        }
         document.getElementById("editPrice").value = price;
         document.getElementById("editAvailability").checked = availability;
         document.getElementById("editRoomModal").style.display = "block";

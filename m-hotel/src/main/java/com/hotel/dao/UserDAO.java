@@ -1,6 +1,7 @@
 package com.hotel.dao;
 
 import com.hotel.model.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,10 +53,9 @@ public class UserDAO {
     public User getUserByUsernameAndPassword(String username, String password) {
         User user = null;
         try (Connection conn = createConnection()) {
-            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM user WHERE username = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, username);
-                pstmt.setString(2, password);
                 try (ResultSet rs = pstmt.executeQuery()) {
                     if (rs.next()) {
                         user = new User();
@@ -79,18 +79,17 @@ public class UserDAO {
     public boolean insertUser(User user) {
         boolean success = false;
         try (Connection conn = createConnection()) {
+            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
             String sql = "INSERT INTO user (username, password, role, name, sex, phone) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, user.getUsername());
-                pstmt.setString(2, user.getPassword());
+                pstmt.setString(2, hashedPassword);
                 pstmt.setString(3, user.getRole());
                 pstmt.setString(4, user.getName());
                 pstmt.setString(5, user.getSex());
                 pstmt.setString(6, user.getPhone());
                 int rows = pstmt.executeUpdate();
-                if (rows > 0) {
-                    success = true;
-                }
+                success = rows > 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();

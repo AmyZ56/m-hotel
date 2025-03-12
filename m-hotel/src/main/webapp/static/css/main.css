@@ -151,6 +151,29 @@ button[type="submit"]:hover {
     outline: none;
 }
 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1c4b7;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f5f0;
+    color: #6c4b4b;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group select:focus {
+    border-color: #c7af9a;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(199, 175, 154, 0.2);
+}
+
+.form-group select option {
+    background-color: #fff;
+    color: #6c4b4b;
+}
+
 .form-group button {
     padding: 12px 20px;
     background-color: #e8d2c1;
